@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
+
 """Basic dictionary cache module"""
 
 
-from .base_caching import BaseCaching
+from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
     """Basic Cache class as simple caching system"""
-    def __init__(self):
-        super().__init__()
-
     def put(self, key, item):
         """Assigns dictionary self.cache_data to item value for key"""
         if key is None or item is None:
