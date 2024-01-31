@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""LRU cache module"""
+"""MRU cache module"""
 
 
 from collections import OrderedDict
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
-    """LRU caching class"""
+class MRUCache(BaseCaching):
+    """MRU caching class"""
     def __init__(self):
         """initialises fifo cache instance"""
         super().__init__()
@@ -20,10 +20,10 @@ class LRUCache(BaseCaching):
                 del self.order[key]
             self.order[key] = None
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                lru = next(iter(self.order))
-                print(f"DISCARD: {lru}")
-                del self.cache_data[lru]
-                del self.order[lru]
+                mru = list(self.order.keys())[-1]
+                print(f"DISCARD: {mru}")
+                del self.cache_data[mru]
+                del self.order[mru]
             self.cache_data[key] = item
 
     def get(self, key):
