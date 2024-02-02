@@ -22,6 +22,7 @@ class LIFOCache(BaseCaching):
                 print(f"DISCARD: {lastkey}")
             self.cache_data[key] = item
             self.cache_data.move_to_end(key, last=True)
+        return
 
     def get(self, key):
         """Returns value in dict linked to key"""
